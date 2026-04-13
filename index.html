@@ -97,10 +97,12 @@
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 8rem 3rem 4rem;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 3rem 5rem;
       position: relative;
       overflow: hidden;
     }
@@ -109,6 +111,22 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+    }
+
+    .hero-botanical {
+      position: absolute;
+      bottom: 0;
+      width: 180px;
+      height: 420px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-botanical--left { left: 0; }
+    .hero-botanical--right { right: 0; }
+
+    @media (max-width: 900px) {
+      .hero-botanical { width: 100px; height: 260px; opacity: 0.7; }
     }
 
     .hero-bg-circle {
@@ -153,6 +171,8 @@
       position: relative; z-index: 1;
       opacity: 0;
       animation: fadeUp 1s ease 0.3s forwards;
+      max-width: 720px;
+      width: 100%;
     }
 
     .hero-eyebrow {
@@ -183,15 +203,20 @@
       letter-spacing: 0.05em;
       color: var(--charcoal-mid);
       margin-bottom: 0.8rem;
-      padding-left: 1rem;
-      border-left: 2px solid var(--sage-light);
+      padding: 0.4rem 1.2rem;
+      border-left: none;
+      border: 1px solid var(--sage-light);
+      display: inline-block;
+      border-radius: 20px;
     }
 
     .hero-desc {
       font-size: 0.88rem;
       color: var(--charcoal-mid);
       margin-bottom: 2.5rem;
-      max-width: 460px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-cta-group {
@@ -199,6 +224,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -258,7 +284,8 @@
       align-items: center;
       justify-content: center;
       opacity: 0;
-      animation: fadeUp 1s ease 0.6s forwards;
+      animation: fadeUp 1s ease 0.8s forwards;
+      margin-top: 3rem;
     }
 
     .hero-card-mock {
@@ -266,14 +293,14 @@
       background: linear-gradient(145deg, #fff 0%, var(--cream) 100%);
       border-radius: 12px;
       padding: 2.5rem;
-      box-shadow: 0 20px 60px rgba(44,44,42,0.12), 0 2px 8px rgba(122,140,110,0.1);
+      box-shadow: 0 20px 60px rgba(30,45,58,0.14), 0 2px 8px rgba(93,125,154,0.12);
       position: relative;
       overflow: hidden;
-      transform: rotate(3deg);
+      transform: rotate(0deg);
       transition: transform 0.4s ease;
     }
 
-    .hero-card-mock:hover { transform: rotate(0deg) scale(1.02); }
+    .hero-card-mock:hover { transform: translateY(-6px) scale(1.02); }
 
     .hero-card-mock::before {
       content: '';
@@ -450,8 +477,9 @@
 
     .stats-row {
       display: flex;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
     }
 
     .stat {
@@ -495,9 +523,9 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      max-width: 1100px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -1042,7 +1070,7 @@
         gap: 3rem;
       }
 
-      .hero-visual { order: -1; }
+      .hero-botanical { display: none; }
       .hero-card-mock { width: 100%; max-width: 320px; }
 
       #about { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
@@ -1065,7 +1093,8 @@
     }
 
     @media (max-width: 480px) {
-      .stats-row { flex-direction: column; gap: 1rem; }
+      .stats-row { flex-direction: row; flex-wrap: wrap; gap: 0.8rem; }
+      .stat { min-width: 80px; }
     }
   </style>
 </head>
@@ -1090,6 +1119,86 @@
       <div class="hero-bg-circle"></div>
       <div class="hero-bg-circle"></div>
     </div>
+
+    <!-- Botanical illustrations left -->
+    <svg class="hero-botanical hero-botanical--left" viewBox="0 0 180 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tall lavender sprig -->
+      <line x1="60" y1="400" x2="60" y2="120" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <ellipse cx="50" cy="380" rx="5" ry="9" fill="rgba(255,255,255,0.3)" transform="rotate(-10,50,380)"/>
+      <ellipse cx="70" cy="360" rx="5" ry="9" fill="rgba(255,255,255,0.3)" transform="rotate(10,70,360)"/>
+      <ellipse cx="50" cy="338" rx="5" ry="9" fill="rgba(255,255,255,0.32)" transform="rotate(-10,50,338)"/>
+      <ellipse cx="70" cy="316" rx="5" ry="9" fill="rgba(255,255,255,0.32)" transform="rotate(10,70,316)"/>
+      <ellipse cx="50" cy="294" rx="5" ry="9" fill="rgba(255,255,255,0.34)" transform="rotate(-10,50,294)"/>
+      <ellipse cx="70" cy="272" rx="5" ry="9" fill="rgba(255,255,255,0.34)" transform="rotate(10,70,272)"/>
+      <ellipse cx="55" cy="248" rx="5" ry="9" fill="rgba(255,255,255,0.36)" transform="rotate(-6,55,248)"/>
+      <ellipse cx="65" cy="226" rx="4.5" ry="8" fill="rgba(255,255,255,0.36)" transform="rotate(6,65,226)"/>
+      <ellipse cx="60" cy="204" rx="4" ry="7" fill="rgba(255,255,255,0.38)" transform="rotate(0,60,204)"/>
+      <ellipse cx="60" cy="182" rx="3.5" ry="6" fill="rgba(255,255,255,0.38)"/>
+      <ellipse cx="60" cy="162" rx="3" ry="5.5" fill="rgba(255,255,255,0.35)"/>
+      <ellipse cx="60" cy="143" rx="2.5" ry="5" fill="rgba(255,255,255,0.3)"/>
+      <ellipse cx="60" cy="128" rx="2" ry="4" fill="rgba(255,255,255,0.25)"/>
+      <!-- Eucalyptus branch -->
+      <line x1="120" y1="420" x2="120" y2="230" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="120" y1="390" x2="96" y2="374" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="88" cy="369" rx="13" ry="8" fill="rgba(255,255,255,0.22)" transform="rotate(-25,88,369)"/>
+      <line x1="120" y1="362" x2="146" y2="346" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="154" cy="341" rx="13" ry="8" fill="rgba(255,255,255,0.22)" transform="rotate(25,154,341)"/>
+      <line x1="120" y1="334" x2="96" y2="318" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="88" cy="313" rx="12" ry="7" fill="rgba(255,255,255,0.2)" transform="rotate(-25,88,313)"/>
+      <line x1="120" y1="306" x2="144" y2="292" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="152" cy="287" rx="12" ry="7" fill="rgba(255,255,255,0.2)" transform="rotate(22,152,287)"/>
+      <line x1="120" y1="278" x2="98" y2="264" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+      <ellipse cx="90" cy="259" rx="11" ry="7" fill="rgba(255,255,255,0.18)" transform="rotate(-22,90,259)"/>
+      <!-- Tiny floating flower -->
+      <circle cx="30" cy="200" r="4" fill="rgba(255,255,255,0.28)"/>
+      <ellipse cx="30" cy="190" rx="3.5" ry="6" fill="rgba(255,255,255,0.22)"/>
+      <ellipse cx="39" cy="194" rx="3.5" ry="6" fill="rgba(255,255,255,0.22)" transform="rotate(72,39,194)"/>
+      <ellipse cx="36" cy="204" rx="3.5" ry="6" fill="rgba(255,255,255,0.22)" transform="rotate(144,36,204)"/>
+      <ellipse cx="24" cy="204" rx="3.5" ry="6" fill="rgba(255,255,255,0.22)" transform="rotate(216,24,204)"/>
+      <ellipse cx="21" cy="194" rx="3.5" ry="6" fill="rgba(255,255,255,0.22)" transform="rotate(288,21,194)"/>
+      <!-- Scattered petals/dots -->
+      <circle cx="20" cy="310" r="2.5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="150" cy="200" r="2" fill="rgba(255,255,255,0.18)"/>
+      <circle cx="40" cy="140" r="1.5" fill="rgba(255,255,255,0.15)"/>
+    </svg>
+
+    <!-- Botanical illustrations right -->
+    <svg class="hero-botanical hero-botanical--right" viewBox="0 0 180 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Mirror lavender -->
+      <line x1="120" y1="400" x2="120" y2="120" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+      <ellipse cx="130" cy="380" rx="5" ry="9" fill="rgba(255,255,255,0.3)" transform="rotate(10,130,380)"/>
+      <ellipse cx="110" cy="360" rx="5" ry="9" fill="rgba(255,255,255,0.3)" transform="rotate(-10,110,360)"/>
+      <ellipse cx="130" cy="338" rx="5" ry="9" fill="rgba(255,255,255,0.32)" transform="rotate(10,130,338)"/>
+      <ellipse cx="110" cy="316" rx="5" ry="9" fill="rgba(255,255,255,0.32)" transform="rotate(-10,110,316)"/>
+      <ellipse cx="130" cy="294" rx="5" ry="9" fill="rgba(255,255,255,0.34)" transform="rotate(10,130,294)"/>
+      <ellipse cx="110" cy="272" rx="5" ry="9" fill="rgba(255,255,255,0.34)" transform="rotate(-10,110,272)"/>
+      <ellipse cx="125" cy="248" rx="5" ry="9" fill="rgba(255,255,255,0.36)" transform="rotate(6,125,248)"/>
+      <ellipse cx="115" cy="226" rx="4.5" ry="8" fill="rgba(255,255,255,0.36)" transform="rotate(-6,115,226)"/>
+      <ellipse cx="120" cy="204" rx="4" ry="7" fill="rgba(255,255,255,0.38)"/>
+      <ellipse cx="120" cy="182" rx="3.5" ry="6" fill="rgba(255,255,255,0.38)"/>
+      <ellipse cx="120" cy="162" rx="3" ry="5.5" fill="rgba(255,255,255,0.35)"/>
+      <ellipse cx="120" cy="143" rx="2.5" ry="5" fill="rgba(255,255,255,0.3)"/>
+      <ellipse cx="120" cy="128" rx="2" ry="4" fill="rgba(255,255,255,0.25)"/>
+      <!-- Branch right -->
+      <line x1="40" y1="420" x2="40" y2="230" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="40" y1="390" x2="64" y2="374" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="72" cy="369" rx="13" ry="8" fill="rgba(255,255,255,0.22)" transform="rotate(25,72,369)"/>
+      <line x1="40" y1="362" x2="16" y2="346" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="8" cy="341" rx="13" ry="8" fill="rgba(255,255,255,0.22)" transform="rotate(-25,8,341)"/>
+      <line x1="40" y1="334" x2="64" y2="318" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="72" cy="313" rx="12" ry="7" fill="rgba(255,255,255,0.2)" transform="rotate(25,72,313)"/>
+      <line x1="40" y1="306" x2="16" y2="292" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+      <ellipse cx="8" cy="287" rx="12" ry="7" fill="rgba(255,255,255,0.2)" transform="rotate(-22,8,287)"/>
+      <!-- Flower right side -->
+      <circle cx="155" cy="180" r="3.5" fill="rgba(255,255,255,0.28)"/>
+      <ellipse cx="155" cy="171" rx="3" ry="5.5" fill="rgba(255,255,255,0.22)"/>
+      <ellipse cx="163" cy="175" rx="3" ry="5.5" fill="rgba(255,255,255,0.22)" transform="rotate(72,163,175)"/>
+      <ellipse cx="160" cy="184" rx="3" ry="5.5" fill="rgba(255,255,255,0.22)" transform="rotate(144,160,184)"/>
+      <ellipse cx="150" cy="184" rx="3" ry="5.5" fill="rgba(255,255,255,0.22)" transform="rotate(216,150,184)"/>
+      <ellipse cx="147" cy="175" rx="3" ry="5.5" fill="rgba(255,255,255,0.22)" transform="rotate(288,147,175)"/>
+      <circle cx="160" cy="310" r="2.5" fill="rgba(255,255,255,0.2)"/>
+      <circle cx="20" cy="250" r="2" fill="rgba(255,255,255,0.18)"/>
+    </svg>
 
     <div class="hero-content">
       <div class="hero-badge">✦ 限時開放 免費名片能量健檢</div>
@@ -1157,8 +1266,8 @@
         </div>
         <div class="value-card">
           <div class="value-icon">✔</div>
-          <div class="value-title">五行視覺設計</div>
-          <div class="value-desc">結合風水邏輯，讓設計發揮超越美感的作用。</div>
+          <div class="value-title">設計讓能量流轉</div>
+          <div class="value-desc">設計即是能量的語言，讓流動的美感為你引路。</div>
         </div>
       </div>
     </div>
@@ -1176,7 +1285,17 @@
           </div>
           <div class="stat">
             <div class="stat-num">∞</div>
-            <div class="stat-label">能量加乘</div>
+            <div class="stat-label">名片風水訓練能量加乘</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;margin-bottom:1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.82rem;color:var(--charcoal-mid);">
+            <span style="color:var(--sage);font-size:0.75rem;letter-spacing:0.08em;">✦</span>
+            <span>NAHA 國際芳療師</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.7rem;font-size:0.82rem;color:var(--charcoal-mid);">
+            <span style="color:var(--sage);font-size:0.75rem;letter-spacing:0.08em;">✦</span>
+            <span>國際綠芳療諮詢師</span>
           </div>
         </div>
         <div class="divider"></div>
@@ -1184,6 +1303,45 @@
           很多時候，差的不是能力，<br>
           而是第一印象的設計。
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENERGY SECTION -->
+  <section id="energy" style="background:linear-gradient(160deg,#1e2d3a 0%,#2a3f52 100%);color:var(--cream);position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 60% 30%,rgba(93,125,154,0.18) 0%,transparent 60%);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;">
+      <div class="reveal" style="text-align:center;margin-bottom:3.5rem;">
+        <span class="section-label" style="color:var(--sage-light);">Energy Code</span>
+        <h2 class="section-title" style="color:var(--cream);">名片背後的能量密碼</h2>
+        <p style="font-size:0.9rem;color:rgba(240,244,248,0.65);max-width:520px;margin:0 auto;">從風水角度看懂名片對事業的深遠影響</p>
+      </div>
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(138,174,200,0.2);border-radius:10px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(138,174,200,0.5)'" onmouseleave="this.style.transform='none';this.style.borderColor='rgba(138,174,200,0.2)'">
+          <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(138,174,200,0.12) 0%,transparent 70%);border-radius:50%;"></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(138,174,200,0.5);line-height:1;margin-bottom:1rem;">桃</div>
+          <div style="font-family:'Noto Serif TC',serif;font-size:1.05rem;font-weight:500;color:var(--cream);margin-bottom:0.8rem;">桃花人緣</div>
+          <div style="width:28px;height:1px;background:var(--sage-light);margin-bottom:1rem;opacity:0.6;"></div>
+          <p style="font-size:0.82rem;color:rgba(240,244,248,0.7);line-height:1.9;">透過名片色彩與布局，增強人際關係與貴人運，讓合作機會自然來臨，拉近你與客戶的距離。</p>
+        </div>
+
+        <div style="background:rgba(93,125,154,0.15);border:1px solid rgba(138,174,200,0.35);border-radius:10px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(138,174,200,0.6)'" onmouseleave="this.style.transform='none';this.style.borderColor='rgba(138,174,200,0.35)'">
+          <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(138,174,200,0.18) 0%,transparent 70%);border-radius:50%;"></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(168,196,216,0.6);line-height:1;margin-bottom:1rem;">財</div>
+          <div style="font-family:'Noto Serif TC',serif;font-size:1.05rem;font-weight:500;color:var(--cream);margin-bottom:0.8rem;">財富豐盛</div>
+          <div style="width:28px;height:1px;background:var(--sage-light);margin-bottom:1rem;opacity:0.6;"></div>
+          <p style="font-size:0.82rem;color:rgba(240,244,248,0.75);line-height:1.9;">調整名片風水布局，開啟金流通道，創造輕而易舉的豐盛收入，讓財富能量流向你。</p>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(138,174,200,0.2);border-radius:10px;padding:2.2rem 2rem;position:relative;overflow:hidden;transition:transform 0.3s,border-color 0.3s;" onmouseenter="this.style.transform='translateY(-6px)';this.style.borderColor='rgba(138,174,200,0.5)'" onmouseleave="this.style.transform='none';this.style.borderColor='rgba(138,174,200,0.2)'">
+          <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(138,174,200,0.12) 0%,transparent 70%);border-radius:50%;"></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(138,174,200,0.5);line-height:1;margin-bottom:1rem;">事</div>
+          <div style="font-family:'Noto Serif TC',serif;font-size:1.05rem;font-weight:500;color:var(--cream);margin-bottom:0.8rem;">事業高升</div>
+          <div style="width:28px;height:1px;background:var(--sage-light);margin-bottom:1rem;opacity:0.6;"></div>
+          <p style="font-size:0.82rem;color:rgba(240,244,248,0.7);line-height:1.9;">優化名片事業宮位，提升專業形象與客戶信任，助力職場順遂，看出你的工作狀態。</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1224,18 +1382,7 @@
         </ul>
       </div>
 
-      <!-- Premium -->
-      <div class="service-card">
-        <div class="service-tag" style="background:var(--sage-pale);color:var(--sage)">品牌全案</div>
-        <div class="service-name">品牌風水全案（含LOGO）</div>
-        <div class="service-price">$5,800 <sub>起</sub></div>
-        <div class="service-desc">單面 $5,800 ／ 雙面 $6,800<br>從品牌識別到名片整體規劃。</div>
-        <ul class="service-features">
-          <li class="service-feature">LOGO + 品牌識別設計</li>
-          <li class="service-feature">整體視覺策略規劃</li>
-          <li class="service-feature">一致的第一印象系統</li>
-        </ul>
-      </div>
+
     </div>
 
     <!-- Sub services -->
@@ -1347,7 +1494,7 @@
   <section id="testimonials">
     <div class="testimonials-header reveal">
       <span class="section-label">Success Stories</span>
-      <h2 class="section-title">客戶說</h2>
+      <h2 class="section-title">好評推薦不斷！</h2>
     </div>
 
     <div class="testimonials-grid reveal">
